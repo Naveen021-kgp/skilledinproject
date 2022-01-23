@@ -650,7 +650,7 @@ button,
                       background: #26a9e0;
                       }
                     </style>
-                <form action="proces.php" method="get" enctype="text/plain">
+                <form method="post" autocomplete="off" name="google-sheet">
                     <hr>
                     <div class="account-type">
                       <input type="radio" value="none" id="radioOne" name="account" checked/>
@@ -663,19 +663,19 @@ button,
                     <input type="text" name="name" id="name" placeholder="Name" required/>
             
                     <label id="icon" for="number"><i class="fas fa-mobile"></i></label>
-                    <input type="text" name="name" id="number" placeholder="Phone Number" required/>
+                    <input type="text" name="number" id="number" placeholder="Phone Number" required/>
             
                     <label id="icon" for="name"><i class="fas fa-envelope"></i></label>
-                    <input type="text" name="name" id="email" placeholder="Email" required/>
+                    <input type="text" name="email" id="email" placeholder="Email" required/>
             
                     <label id="icon" for="name"><i class="fas fa-user-md"></i></label>
-                    <input type="text" name="name" id="occupation" placeholder="Occupation" required/>
+                    <input type="text" name="occupation" id="occupation" placeholder="Occupation" required/>
             
                       <label id="icon" for="name"><i class="fas fa-building"></i></label>
-                    <input type="text" name="name" id="city" placeholder="City" required/>
+                    <input type="text" name="city" id="city" placeholder="City" required/>
                     
                     <label id="icon" for="name"><i class="fas fa-unlock-alt"></i></label>
-                    <input type="text" name="name" id="breif" placeholder="Breif about yourself!!" required/>
+                    <input type="text" name="breif" id="breif" placeholder="Breif about yourself!!" required/>
                     <hr>
                     <div class="gender">
                       <input type="radio" value="none" id="male" name="gender" checked/>
@@ -707,6 +707,20 @@ button,
 
 	
 </div>
+	<script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx2_V5RzsDDf9yuWMAIk0qKUFARf7y7iT0WrYUTECmdmIrjToI/exec'
+            const form = document.forms['google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 /* <![CDATA[ */
 var clickDebugLink;
